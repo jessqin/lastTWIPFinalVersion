@@ -83,27 +83,35 @@ public class Main {
             lineOptions = options.get(i).split("\t");
             for (int k = 1; k < lineOptions.length; k++)
             {
-                if (lineOptions[k].contains("+"))
+                String s = lineOptions[k];
+                if (s.contains("+"))
                 {
-                    for (int j = 0; j<lineOptions[k].length(); j++)
+                    for (int j = 0; j<s.length(); j++)
                     {
                         int indx = lineOptions[k].indexOf("+");
                         while (indx !=-1)
                         {
-                            if (lineOptions[k].substring(indx + 2, indx + 4).contains("1"))
+                            if (s.substring(indx + 1, indx + 5).contains("1"))
                             {
                                 total += 1;
                             }
-                            else if (lineOptions[k].substring(indx + 2, indx + 4).contains("5"))
+                            else if (s.substring(indx + 1, indx + 5).contains("5"))
                             {
                                 total += .5;
                             }
-                            lineOptions[k] = lineOptions[k].substring(indx + 1);
-                            indx = lineOptions[k].indexOf("+");
+                            s = s.substring(indx + 1);
+                            indx = s.indexOf("+");
                         }
+
+                        break;
 
                     }
                 }
+                else if (!(s.equalsIgnoreCase("")) && s.substring(0,1).matches(".*\\d+.*") && (s.length() <= 1))
+                {
+                    total -= (Double.parseDouble(lineOptions[k]) * 0.25);
+                }
+
             }
             totals[i] = total;
             total = 0;
@@ -134,6 +142,14 @@ public class Main {
                 avg = studentListTD.get(i).returnScore();
                 Student s = new Student(studentListTD.get(i).returnNum(), avg);
                 StudentTotal.add(s);
+            }
+        }
+
+        for (int i = 0; i < options.size(); i++)
+        {
+            if (options.get(i).contains("\\d") && !(options.get(i).contains("\\w")))
+            {
+
             }
         }
 
