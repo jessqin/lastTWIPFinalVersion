@@ -5,11 +5,22 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws IOException
     {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Is the names.txt file in the source folder?");
+        String ans = sc.nextLine();
+        if (!ans.equalsIgnoreCase("yes"))
+        {
+            System.out.println("The names.txt file must be in the source folder for this program to run");
+            System.exit(0);
+        }
+
         int txtLength = -1;
         int size = -1;
 
@@ -273,6 +284,10 @@ public class Main {
 
 
 //        BufferedReader b2 = new BufferedReader(new FileReader("src\\namesTest.txt"));
+
+
+
+        //names.txt must be in the source folder
         BufferedReader b2 = new BufferedReader(new FileReader("src\\names.txt"));
         String name;
 
