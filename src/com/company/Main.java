@@ -85,7 +85,7 @@ public class Main {
         double [] totals = new double[secretNum.length];
 
 
-        for (int i=0; i<options.size(); i++)
+        for (int i= 0; i<options.size(); i++)
         {
             lineOptions = options.get(i).split("\t");
             for (int k = 1; k < lineOptions.length; k++)
@@ -169,7 +169,7 @@ public class Main {
                     break;
                 }
                 String s1 = lineOptions[k];
-                if (s1.matches(".*\\d+.*") && !(s1.equalsIgnoreCase("")) && s1.length()<= 3)
+                if ((s1.matches(".*\\d+.*") && s1.length() <= 1) || (!s1.matches(".*\\d+.*")))
                 {
                     count++;
                 }
@@ -272,6 +272,7 @@ public class Main {
         }
 
 
+//        BufferedReader b2 = new BufferedReader(new FileReader("src\\namesTest.txt"));
         BufferedReader b2 = new BufferedReader(new FileReader("src\\names.txt"));
         String name;
 
@@ -292,12 +293,12 @@ public class Main {
             names.add(nn[0]);
         }
 
-        System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", "Name", "Number", "Free Response 1", "Free Response 2", "Total Score (including syntax errors)");
+        System.out.printf("%-25s %-25s %-25s %-25s %-25s\n", "Name", "Number", "Free Response 1", "Free Response 2", "Total Score (including syntax errors)");
         for (int i = 0; i < StudentTotal.size(); i++)
         {
 //            System.out.println(StudentAverage.get(i).returnNum() + "\t\t\t\t\t\t" + StudentAverage.get(i).getResponse1() + "\t\t\t\t\t\t\t\t"
 //                    + StudentAverage.get(i).getResponse2() + "\t\t\t\t\t\t\t\t" + StudentTotal.get(i).returnScore());
-            System.out.printf("%-20s %-20s %-20s %-20s %-20s\n", names.get(i), StudentAverage.get(i).returnNum(), StudentAverage.get(i).getResponse1(),
+            System.out.printf("%-25s %-25s %-25s %-25s %-25s\n", names.get(i), StudentAverage.get(i).returnNum(), StudentAverage.get(i).getResponse1(),
                     StudentAverage.get(i).getResponse2(), StudentTotal.get(i).returnScore());
             System.out.println("");
         }
